@@ -8,12 +8,12 @@ class Follower
         @name = name
         @age = age
         @life_motto = life_motto
-        @cults = []
         @@all << self
     end
 
     def join_cult(cult)
-        @cults << cult
+        # add a bloodoath
+        BloodOath.new(self, cult, date)
     end
     
     def self.all

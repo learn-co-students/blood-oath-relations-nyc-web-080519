@@ -10,16 +10,19 @@ class Cult
         @location = location
         @founding_year = founding_year
         @slogan = slogan
-        @followers = []
         @@all << self
     end
 
     def recruit_follower(follower)
-        @followers << follower
+        # add a bloodoath
+        BloodOath.new(follower, self, date)
+            
     end
 
     def cult_population
-        @followers.length
+        BloodOath.all.select do |oath|
+            oath.cult == self
+        end
     end
 
     def self.all
