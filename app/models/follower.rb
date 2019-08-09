@@ -11,7 +11,7 @@ class Follower
         @@all << self
     end
 
-    def join_cult(cult)
+    def join_cult(cult)         #i like cookies
         # add a bloodoath
         BloodOath.new(self, cult, date)
     end
