@@ -8,12 +8,13 @@ class Follower
         @name = name
         @age = age
         @life_motto = life_motto
-        @cults = []
+        # @cults = [] - don't necessarily need this array because using 'bloodoath' as join table
         @@all << self
     end
 
     def join_cult(cult)
-        @cults << cult
+        # @cults << cult - not necessary
+        BloodOath.new(self, cult, Time.now.strftime("%Y/%m/%d")) # parameter ordering same as initialize arg ordering 
     end
     
     def self.all

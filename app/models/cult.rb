@@ -10,16 +10,22 @@ class Cult
         @location = location
         @founding_year = founding_year
         @slogan = slogan
-        @followers = []
+        # @followers = []  -- don't necessarily need this array because using 'bloodoath' as join table
         @@all << self
     end
 
     def recruit_follower(follower)
-        @followers << follower
+        # @followers << follower - not necessary
+        BloodOath.new(follower, self, Time.now.strftime("%Y/%m/%d")) # self to refer to the cult, and put in date
     end
 
     def cult_population
-        @followers.length
+        selected = BloodOath.all.select do |oath|
+            oath.cult == self
+        end
+        selected.count
+        # @followers.length #refactor code since we cant use @followers
+        # population for specific cult not all the followers for all the cults
     end
 
     def self.all
