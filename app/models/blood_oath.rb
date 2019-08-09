@@ -9,5 +9,8 @@ class BloodOath
         @follower = follower
         @cult = cult 
         @@all << self
+        follower.join_cult(cult)
+        cult.recruit_follower(follower)
     end 
+    
 end
