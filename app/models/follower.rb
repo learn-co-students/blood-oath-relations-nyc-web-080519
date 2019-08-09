@@ -19,8 +19,19 @@ class Follower
     end
 
     def cults
-        BloodOath.all.select do |blood_oath|
+        cult_array = []
+        my_BloodOaths = BloodOath.all.select do |blood_oath|
             blood_oath.follower == self
+        end
+        my_BloodOaths.each do |bloodOath|
+            cult_array << bloodOath.cult
+        end
+        return cult_array
+    end
+
+    def my_BloodOaths
+        BloodOath.all.select do |bloodOath|
+            bloodOath.follower == self
         end
     end
 
@@ -31,7 +42,7 @@ class Follower
     end
 
     def my_cults_slogans 
-        self.cults.each do |bloodOath|
+        self.my_BloodOaths.each do |bloodOath|
             puts bloodOath.cult.slogan 
         end
         return
@@ -77,6 +88,21 @@ class Follower
                 top_ten_array << follower
             end
         end
+    end
+
+    def fellow_cult_members
+        follower_array = []
+        my_bloodOath_array = []
+        cult_array = []
+
+        cult_array = self.cults
+        cult_array.each do |this_cult|
+            my_bloodOath_array = BloodOath.all.select {|bloodOath| bloodOath.cult == this_cult}
+        end
+        
+        my_bloodOath_array.map do |bloodOath|
+            bloodOath.follower
+        end.uniq
     end
 
 

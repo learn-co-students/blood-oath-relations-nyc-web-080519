@@ -17,4 +17,4 @@ class BloodOath
     def self.first_oath
         all.first.follower
     end
-end
+end #end of BloodOath class

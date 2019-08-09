@@ -88,5 +88,5 @@ class Cult
         end
         return biggest_location
     end
-end
+end #end of Cult class
 
