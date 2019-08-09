@@ -12,7 +12,7 @@ class Follower
         @@all << self
     end
 
-    def join_cult(cult)
+    def join_cult(cult)         #i like cookies
         # @cults << cult - not necessary
         BloodOath.new(self, cult, Time.now.strftime("%Y/%m/%d")) # parameter ordering same as initialize arg ordering 
     end

@@ -1,3 +1,5 @@
+require 'pry'
+
 class BloodOath
 
     attr_reader :follower, :cult, :date
@@ -17,3 +19,4 @@ class BloodOath
 
 
 end # end of class
+

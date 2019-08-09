@@ -14,6 +14,7 @@ f1 = Follower.new("Susan", 34, "For the cult!")
 f1.join_cult(c1)
 
 
+
 binding.pry
 
 puts "Mwahahaha!" # just in case pry is buggy and exits
