@@ -21,10 +21,11 @@ class Bloodoath
   end
 
   def self.first_oath
-    #self.all.first #returns the instance that was created first, NOT the bloodoath with the earlier date
+    #self.all.first #returns the instance that was created first (aka shoveled into the array first), NOT the bloodoath with the earlier date
     oaths_in_order = self.all.sort_by {|oath| Time.parse(oath.initiation_date)}
     #Time.parse will parse the initiation_date string into Time.now format and fill in the missing info (aka time) with now (must require 'time' to use this method)
     oaths_in_order.first.follower
+    
   end
   
 

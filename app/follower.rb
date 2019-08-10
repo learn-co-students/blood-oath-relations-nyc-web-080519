@@ -19,7 +19,11 @@ class Follower
   end
 
   def join_cult(cult)
-    Bloodoath.new(cult, self)
+    if self.age >= cult.minimum_age
+      Bloodoath.new(cult, self)
+    else
+      puts "I'm sorry, you must be #{cult.minimum_age} or older to take the blood oath and join the #{cult.name} cult."
+    end
   end
 
   def cults

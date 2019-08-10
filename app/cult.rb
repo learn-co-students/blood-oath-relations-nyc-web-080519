@@ -3,15 +3,16 @@ require 'pry'
 class Cult
 
   attr_reader :name, :founding_year
-  attr_accessor :location, :slogan
+  attr_accessor :location, :slogan, :minimum_age
 
   @@all = []
   
-  def initialize(name, location, founding_year, slogan)
+  def initialize(name, location, founding_year, slogan, minimum_age=18)
     @name = name
     @location = location
     @founding_year = founding_year
     @slogan = slogan
+    @minimum_age = minimum_age
     @@all << self
   end
 
@@ -20,8 +21,19 @@ class Cult
   end
 
   def recruit_follower(follower)
-    Bloodoath.new(self, follower)
+    if follower.age >= self.minimum_age
+      Bloodoath.new(self, follower) 
+    else
+      puts "I'm sorry, you must be #{self.minimum_age} or older to take the blood oath and join the #{self.name} cult."
+    end
   end
+
+  #recruit_follower
+# takes in an argument of a Follower instance and adds them to this cult's list of followers
+# NOW this is changed such that if the given Follower instance is not of age:
+# do not let them join the cult
+# print out a friendly message informing them that they are too young
+
 
   def get_followers
     followers = []
@@ -79,13 +91,15 @@ class Cult
     # #each_with_object makes a new key of location if the location doesn't already exist in the hash, otherwise it increments the count each time the location appears
     # location_count.max_by {|location, count| count }[0]
     # #returns an array ["location", count] so return index 0 to get the location string
+    # #left this here in case I wanted to make other methods that might need the count of each location
 
     #method 2
     get_locations.max_by { |location| get_locations.count(location)}
     #max_by will return the obj with largest count, and each location in the array is being counted with .count(location). Each element is being iterated and counted, then max_by picks out the object that has the highest count.
+    #source: https://medium.com/@dallasbille/two-ways-of-finding-the-element-that-occurs-the-most-in-an-array-with-ruby-7fb484ea1a6d
 
   end
 
-
-
 end #end of Cult class
+
+
