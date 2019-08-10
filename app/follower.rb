@@ -18,6 +18,20 @@ class Follower
     @@all
   end
 
+  def self.of_a_certain_age(age)
+    self.all.select do |follower|
+      follower.age >= age
+    end
+  end
+
+  def self.most_active
+    self.all.max_by {|follower| follower.cults.length}
+  end
+
+  def self.top_ten
+    self.all.max_by(10) {|follower| follower.cults.length}
+  end
+
   def join_cult(cult)
     if self.age >= cult.minimum_age
       Bloodoath.new(cult, self)
@@ -34,24 +48,10 @@ class Follower
     my_cults
   end
 
-  def self.of_a_certain_age(age)
-    self.all.select do |follower|
-      follower.age >= age
-    end
-  end
-
   def my_cults_slogans
     self.cults.each {|cult| puts cult.slogan}
   end
   #this puts the slogans and returns the original array; deliverables don't specifiy a return
-
-  def self.most_active
-    self.all.max_by {|follower| follower.cults.length}
-  end
-
-  def self.top_ten
-    self.all.max_by(10) {|follower| follower.cults.length}
-  end
 
   def fellow_cult_members
     Follower.all.select do |follower|

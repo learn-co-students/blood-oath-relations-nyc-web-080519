@@ -20,33 +20,6 @@ class Cult
     @@all
   end
 
-  def recruit_follower(follower)
-    if follower.age >= self.minimum_age
-      Bloodoath.new(self, follower) 
-    else
-      puts "I'm sorry, you must be #{self.minimum_age} or older to take the blood oath and join the #{self.name} cult."
-    end
-  end
-
-  #recruit_follower
-# takes in an argument of a Follower instance and adds them to this cult's list of followers
-# NOW this is changed such that if the given Follower instance is not of age:
-# do not let them join the cult
-# print out a friendly message informing them that they are too young
-
-
-  def get_followers
-    followers = []
-    Bloodoath.all.each do |oath|
-      followers << oath.follower if oath.cult == self
-    end
-    followers
-  end
-
-  def cult_population
-    self.get_followers.length
-  end
-
   def self.find_by_name(name)
     self.all.find {|cult| cult.name == name }
   end
@@ -58,21 +31,6 @@ class Cult
   def self.find_by_founding_year(year)
     self.all.select {|cult| cult.founding_year == year }
   end
-
-  def average_age 
-    total_age = 0
-    divisor = 0
-    get_followers.each do |follower|
-      total_age += follower.age 
-      divisor += 1
-    end
-    total_age / divisor.to_f
-  end
-
-  def my_followers_mottos
-    get_followers.each {|follower| puts follower.life_motto}
-  end
-  #this puts the mottos and returns the original array; deliverables don't specifiy a return
 
   def self.least_popular
     self.all.min_by {|cult| cult.cult_population}
@@ -99,6 +57,43 @@ class Cult
     #source: https://medium.com/@dallasbille/two-ways-of-finding-the-element-that-occurs-the-most-in-an-array-with-ruby-7fb484ea1a6d
 
   end
+
+  def recruit_follower(follower)
+    if follower.age >= self.minimum_age
+      Bloodoath.new(self, follower) 
+    else
+      puts "I'm sorry, you must be #{self.minimum_age} or older to take the blood oath and join the #{self.name} cult."
+    end
+  end
+
+  def get_followers
+    followers = []
+    Bloodoath.all.each do |oath|
+      followers << oath.follower if oath.cult == self
+    end
+    followers
+  end
+
+  def cult_population
+    self.get_followers.length
+  end
+
+  def average_age 
+    total_age = 0
+    divisor = 0
+    get_followers.each do |follower|
+      total_age += follower.age 
+      divisor += 1
+    end
+    total_age / divisor.to_f
+  end
+
+  def my_followers_mottos
+    get_followers.each {|follower| puts follower.life_motto}
+  end
+  #this puts the mottos and returns the original array; deliverables don't specifiy a return
+
+  
 
 end #end of Cult class
 
