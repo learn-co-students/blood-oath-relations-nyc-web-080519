@@ -22,11 +22,19 @@ bruh = Follower.new("Bruh", 24, "I can squat my bodyweight")
 bro = Follower.new("Bro", 24, "I can squat double my bodyweight")
 brody = Follower.new("Brody", 24, "I can bench my bodyweight")
 chad = Follower.new("Chad", 24, "I can clean my bodyweight")
+koolaid_man = Follower.new("Kool-Aid Man", 69, "Oh yeah!")
 
 chad.join_cult(crossfit, "2012-08-04")
 bro.join_cult(crossfit, "2013-04-04")
 bruh.join_cult(crossfit, "2014-12-04")
 brody.join_cult(crossfit, "2017-01-13")
+brody.join_cult(scientology, "2007-08-03")
+scientology.recruit_follower(tom_cruise, "2001-01-05")
+scientology.recruit_follower(john_travolta, "2001-01-01")
+scientology.recruit_follower(bruh, "2003-07-05")
+jonestown.recruit_follower(koolaid_man, "1985-04-05")
+
+
 
 
 binding.pry
