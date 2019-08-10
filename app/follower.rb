@@ -49,6 +49,24 @@ class Follower
     self.all.max_by(10) {|follower| follower.cults.length}
   end
 
+  def fellow_cult_members
+    Follower.all.select do |follower|
+      follower.cults.sort_by {|cult| cult.object_id} == self.cults.sort_by {|cult| cult.object_id} if follower != self
+    end
+  end
+  #this will only return an array of followers who are in the EXACT same cults as you
+  
+  #if you want people who are in at least one cult with you:
+  def fellow_cult_members_inclusive
+    fellows = []
+    Cult.all.each do |cult|
+      if cult.get_followers.include?(self)
+        cult.get_followers.each { |follower| fellows << follower if follower != self }
+      end
+    end
+    fellows.uniq
+  end
 
 
 end #end of Follower class
+

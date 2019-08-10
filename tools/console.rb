@@ -35,6 +35,9 @@ brody.join_cult(crossfit)
 brody.join_cult(scientology)
 brody.join_cult(heavensgate)
 scientology.recruit_follower(tom_cruise)
+tom_cruise.join_cult(crossfit)
+tom_cruise.join_cult(heavensgate)
+
 scientology.recruit_follower(john_travolta)
 scientology.recruit_follower(bruh)
 jonestown.recruit_follower(koolaid_man)
@@ -42,7 +45,7 @@ heavensgate.recruit_follower(koolaid_man)
 #branch_dividians.recruit_follower(koolaid_man)
 crossfit.recruit_follower(koolaid_man)
 scientology.recruit_follower(koolaid_man)
-tom_cruise.join_cult(crossfit)
+
 
 
 
