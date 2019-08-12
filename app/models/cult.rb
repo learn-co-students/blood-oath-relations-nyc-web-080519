@@ -14,7 +14,11 @@ class Cult
     end
 
     def recruit_follower(follower, date)
-        BloodOath.new(self, follower, date)
+        if follower.age > minimum_age
+            BloodOath.new(self, follower, date)
+        else
+            puts "Sorry, you are too young to be recruited"
+        end
     end
 
     def my_bloodoaths
@@ -78,9 +82,10 @@ class Cult
         cult_locations.max_by do |location|
             cult_locations.count(location)
         end
-        
-        #return array of locations - need to return most common one
+    end
 
+    def minimum_age
+        18
     end
 
 end #end of Cult class

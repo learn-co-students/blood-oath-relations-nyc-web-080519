@@ -13,6 +13,7 @@ cult2 = Cult.new("Amy's Cult", "New York City", "1993", "Blood")
 cult3 = Cult.new("Evans' Cult", "Flatiron", "2019", "Spicy")
 cult4 = Cult.new("Dan's Cult", "Flatiron", "2019", "I love Essen")
 
+amy = Follower.new("Amy", 16, "baby")
 ryan = Follower.new("Ryan", 25, "yolo")
 person = Follower.new("Bob", 50, "whhatever")
 person2 = Follower.new("person2", 25, "2")
